@@ -2,7 +2,7 @@ import { createClient } from '@/utils/supabase/server';
 import ReactMarkdown from 'react-markdown';
 
 export default async function ArticlePage({ params }: { params: { slug: string } }) {
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: article } = await supabase
     .from('articles')
     .select('*')

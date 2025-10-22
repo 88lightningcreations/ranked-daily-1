@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { createClient } from '@/utils/supabase/server';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: articles } = await supabase.from('articles').select('slug, updated_at').eq('status', 'published');
 
   const articleRoutes = articles?.map(({ slug, updated_at }) => ({

@@ -3,7 +3,7 @@ import ArticleCarousel from '@/components/ArticleCarousel'
 import ProductCarousel from '@/components/ProductCarousel'
 
 export default async function Page() {
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: articles } = await supabase.from('articles').select('*').eq('status', 'published')
   const { data: products } = await supabase.from('products').select('*').eq('status', 'published')
 
