@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import { Card, Row, Col, Button } from 'react-bootstrap';
-import Link from 'next/link';
+import { Card, Row, Col } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
+import { useRouter } from 'next/navigation';
 
 interface CarouselItem {
   id: string;
@@ -20,6 +20,7 @@ interface CustomCarouselProps {
 
 export default function CustomCarousel({ items, itemType }: CustomCarouselProps) {
   const [itemsToShow, setItemsToShow] = useState(3);
+  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -38,6 +39,10 @@ export default function CustomCarousel({ items, itemType }: CustomCarouselProps)
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleCardClick = (slug: string) => {
+    router.push(`/${itemType}/${slug}`);
+  };
+
   const groupedItems = [];
   for (let i = 0; i < items.length; i += itemsToShow) {
     groupedItems.push(items.slice(i, i + itemsToShow));
@@ -54,15 +59,16 @@ export default function CustomCarousel({ items, itemType }: CustomCarouselProps)
           <Row>
             {group.map((item) => (
               <Col key={item.id}>
-                <Link href={`/${itemType}/${item.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <Card style={{ marginBottom: '20px' }}>
-                    {item.image_url && <Card.Img variant="top" src={item.image_url} />}
-                    <Card.Body>
-                      <Card.Title>{item.title}</Card.Title>
-                      <Card.Text>{item.summary}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Link>
+                <Card
+                  style={{ marginBottom: '20px', cursor: 'pointer' }}
+                  onClick={() => handleCardClick(item.slug)}
+                >
+                  {item.image_url && <Card.Img variant="top" src={item.image_url} />}
+                  <Card.Body>
+                    <Card.Title>{item.title}</Card.Title>
+                    <Card.Text>{item.summary}</Card.Text>
+                  </Card.Body>
+                </Card>
               </Col>
             ))}
           </Row>
