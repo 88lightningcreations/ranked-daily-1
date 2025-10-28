@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+Sitemap: https://www.rankeddaily.com/sitemap.xml
+Sitemap: https://www.rankeddaily.com/blog/sitemap.xml
