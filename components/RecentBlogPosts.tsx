@@ -1,12 +1,11 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 import BlogPostCard from './BlogPostCard';
 import { PostgrestError } from '@supabase/supabase-js';
-import { Row, Col, Button } from 'react-bootstrap';
-import Link from 'next/link';
+import './RecentBlogPosts.css';
 
 interface Post {
   id: string;
@@ -19,6 +18,9 @@ export default function RecentBlogPosts() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<PostgrestError | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -26,14 +28,12 @@ export default function RecentBlogPosts() {
         const { data, error } = await supabase
           .from('blog_posts')
           .select('id, title, slug, seo_meta_desc')
-          .eq('is_published', true)
-          .order('published_at', { ascending: false })
-          .limit(3);
+          .order('published_at', { ascending: false });
 
         if (error) {
           throw error;
         }
-
+ 
         setPosts(data || []);
       } catch (error) {
         setError(error as PostgrestError);
@@ -45,6 +45,41 @@ export default function RecentBlogPosts() {
     fetchPosts();
   }, []);
 
+  const resetTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+
+  useEffect(() => {
+    resetTimeout();
+    if (!isHovered && posts.length > 1) {
+      timeoutRef.current = setTimeout(
+        () =>
+          setCurrentIndex((prevIndex) =>
+            prevIndex === posts.length - 1 ? 0 : prevIndex + 1
+          ),
+        2000
+      );
+    }
+
+    return () => {
+      resetTimeout();
+    };
+  }, [currentIndex, isHovered, posts.length]);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === posts.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? posts.length - 1 : prevIndex - 1
+    );
+  };
+
   if (loading) {
     return <p>Loading blog posts...</p>;
   }
@@ -54,19 +89,27 @@ export default function RecentBlogPosts() {
   }
 
   return (
-    <div>
-      <Row>
+    <div 
+      className="carousel-container"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        className="carousel-track"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
         {posts.map((post) => (
-          <Col md={4} key={post.id} className="mb-4">
-              <BlogPostCard post={post} />
-          </Col>
+          <div className="carousel-slide" key={post.id}>
+            <BlogPostCard post={post} />
+          </div>
         ))}
-      </Row>
-      <div className="text-center">
-        <Link href="/blog" passHref>
-          <Button variant="primary">View More</Button>
-        </Link>
       </div>
+      {posts.length > 1 && (
+        <>
+          <button className="carousel-arrow prev" onClick={prevSlide}>&#10094;</button>
+          <button className="carousel-arrow next" onClick={nextSlide}>&#10095;</button>
+        </>
+      )}
     </div>
   );
 }
