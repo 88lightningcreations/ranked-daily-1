@@ -31,13 +31,13 @@ const marketingPackages = [
 
 export default function Page() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4">
       <h1 className="text-4xl font-bold text-center mb-8">Turn Attention Into Cash</h1>
-      <p className="text-lg text-center mb-12">
+      <p className="text-lg text-center mb-16">
         We help skilled laborers and business owners grow their business by leveraging the power of Google SEO and content marketing.
       </p>
 
-      <section className="grid md:grid-cols-2 gap-8 mb-12">
+      <section className="grid md:grid-cols-2 gap-8 mb-16">
         {marketingPackages.map((pkg) => (
           <Link href={pkg.link} key={pkg.title} passHref legacyBehavior>
             <Card as="a" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -52,19 +52,19 @@ export default function Page() {
         ))}
       </section>
 
-      <section className="mb-12">
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+        <FAQ />
+      </section>
+
+      <section className="mb-16">
         <h2 className="text-3xl font-bold text-center mb-8">Recent Blog Posts</h2>
         <RecentBlogPosts />
       </section>
 
-      <section className="mb-12">
+      <section className="mb-16">
         <h2 className="text-3xl font-bold text-center mb-8">Products</h2>
         <ProductsList />
-      </section>
-
-      <section>
-        <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
-        <FAQ />
       </section>
     </div>
   );

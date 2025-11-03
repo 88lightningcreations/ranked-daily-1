@@ -1,4 +1,3 @@
-
 import { Card } from 'react-bootstrap';
 import Link from 'next/link';
 
@@ -13,7 +12,7 @@ interface BlogPostCardProps {
 
 export default function BlogPostCard({ post }: BlogPostCardProps) {
     const summary = post.seo_meta_desc || '';
-    const maxWords = 40; 
+    const maxWords = 40;
     const words = summary.split(' ');
 
     const isTruncated = words.length > maxWords;
@@ -21,34 +20,22 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
     let summaryContent;
 
     if (isTruncated) {
-        const mainTextWords = words.slice(0, maxWords - 4);
-        const linkWords = words.slice(maxWords - 4, maxWords);
-
-        summaryContent = (
-            <>
-                {mainTextWords.join(' ')}{' '}
-                <Link href={`/blog/${post.slug}`} passHref legacyBehavior>
-                    <a>{linkWords.join(' ')}...</a>
-                </Link>
-            </>
-        );
-
+        const truncatedWords = words.slice(0, maxWords);
+        summaryContent = truncatedWords.join(' ') + '...';
     } else {
         summaryContent = summary;
     }
 
   return (
-    <Card style={{ height: '100%', border: 'none' }}>
-      <Card.Body>
-        <Link href={`/blog/${post.slug}`} passHref legacyBehavior>
-            <Card.Title as="a" style={{ color: 'inherit', textDecoration: 'none' }}>
-                {post.title}
-            </Card.Title>
-        </Link>
-        <Card.Text as="div">
-            {summaryContent}
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Card className="h-100 border-0" style={{cursor: 'pointer'}}>
+            <Card.Body>
+                <Card.Title>{post.title}</Card.Title>
+                <Card.Text as="div">
+                    {summaryContent}
+                </Card.Text>
+            </Card.Body>
+        </Card>
+    </Link>
   );
 }

@@ -1,10 +1,17 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Yellowtail } from 'next/font/google';
 import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CookieConsentWrapper from '@/components/CookieConsentWrapper';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
+const yellowtail = Yellowtail({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-yellowtail',
+});
 
 export const metadata: Metadata = {
   title: 'Turn Attention Into Cash - Digital Marketing for Skilled Laborers',
@@ -18,8 +25,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {children}
+      <body className={`${inter.className} ${yellowtail.variable} flex flex-col min-h-screen`}>
+        <Header />
+        <main id="main-content" className="flex-grow container mx-auto px-4 py-12">
+          {children}
+        </main>
+        <Footer />
         <CookieConsentWrapper />
       </body>
     </html>
