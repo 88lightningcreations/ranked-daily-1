@@ -5,7 +5,6 @@ import { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 import BlogPostCard from './BlogPostCard';
 import { PostgrestError } from '@supabase/supabase-js';
-import './RecentBlogPosts.css';
 
 interface Post {
   id: string;
