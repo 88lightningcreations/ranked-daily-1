@@ -17,12 +17,12 @@ export default function GoogleBusinessProfilePage() {
           <ul className="list-disc list-inside mb-4">
             <li>Complete and accurate profile setup.</li>
             <li>Keyword optimization to match customer searches.</li>
-            <li>Regular updates with photos, posts, and Q&As.</li>
-            <li>Review management to build trust and credibility.</li>
-            <li>Detailed monthly performance reports.</li>
+            <li>Regular updates with photos, posts, and Q's & A's.</li>
+            <li>Review management to builds trust, credibility, and relevance for Google and perspective clients.</li>
+            
           </ul>
           <p>
-            Let us turn your Google Business Profile into a customer-generating machine. Contact us today for a free consultation!
+            Your Google Business Profile is the most fundamental step to turn your digital strategy into a customer-generating machine. Comparable to an oil change or air & water filter replacement, this will define the quality of your experience and sustainability of the lifecycle of your campaigns!
           </p>
         </Card.Body>
       </Card>

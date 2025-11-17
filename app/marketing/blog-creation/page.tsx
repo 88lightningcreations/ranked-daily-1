@@ -4,25 +4,24 @@ import { Card } from "react-bootstrap";
 export default function BlogCreationPage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-8">Blog Creation</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">Bespoke Blog Creation</h1>
       <Card>
         <Card.Header>
-          <Card.Title>Content that Drives Engagement and SEO</Card.Title>
+          <Card.Title>Content Supplying only what is Demanded</Card.Title>
         </Card.Header>
         <Card.Body>
           <p className="mb-4">
-            Content is king, and a high-quality blog is the best way to wear the crown. We create engaging, data-driven blog content based on Google Trends and keyword research. Each article is crafted to attract your target audience, answer their questions, and position you as an industry expert.
+            Content is king, and a high-quality blog is the best way to wear the crown. Google is the king-maker, which is why only relevant (demanded), authoratative, engaging, data-driven blog content is made. Each article is crafted to attract exactly what your target audience needs now, answering questions, and positioning you as the only needed industry expert.
           </p>
           <h3 className="text-xl font-bold mb-2">Our Process:</h3>
           <ul className="list-disc list-inside mb-4">
-            <li>In-depth keyword research and topic ideation.</li>
-            <li>Content writing by experienced, native-English speakers.</li>
-            <li>SEO optimization for titles, meta descriptions, and headers.</li>
-            <li>Integration of relevant images and multimedia.</li>
-            <li>Structured data (JSON-LD) for enhanced search visibility.</li>
+            <li>In-depth keyword research and topic ideation specific to your service areas.</li>
+            <li>Content writen from the perspective of experienced skilled laborers, native-English speakers.</li>
+            <li>The term 'SEO' in the age of AI means there must be strict adherance to supplying exactly what a client needs. Attempting to be sneaking with transparent backlinks or other equivalent strategies will result in you being blacklisted.  </li>
+            <li>Google indexes your blogs and ranks the content against your competition. </li>
           </ul>
           <p>
-            Start publishing content that gets results. Contact us to learn more about our blog creation services.
+            Publish content that gets results. 
           </p>
         </Card.Body>
       </Card>

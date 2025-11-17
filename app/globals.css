@@ -1,5 +1,9 @@
 
 /* Base body reset */
+html {
+  scroll-snap-type: y mandatory;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -12,18 +16,9 @@ html, body {
 .section-content {
   max-width: 1280px;
   width: 100%;
-  height: 100%;
   margin: 0 auto;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   box-sizing: border-box;
-}
-
-.scrollable-content {
-  overflow-y: auto;
-  flex-grow: 1;
 }
 
 /* --- Typography --- */
@@ -47,83 +42,47 @@ html, body {
 .text-center { text-align: center; }
 
 
-/* --- MOBILE & LAPTOP: Snap-Scroll Layout --- */
-
-.mobile-laptop-container {
-  height: 100vh;
-  width: 100%;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-}
+/* --- Section Snapping Behavior --- */
 
 .snap-section {
-  height: 100vh;
+  min-height: 100vh; /* Be at least screen height, but can grow */
   width: 100%;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;
-}
-
-.full-height-footer {
-  width: 100%;
-  height: 100%;
   display: flex;
-  align-items: flex-end;
-}
-
-/* By default, hide the desktop container */
-.desktop-container {
-  display: none;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content */
+  padding: 4rem 0; /* Add vertical spacing */
+  box-sizing: border-box;
 }
 
 
 /* --- EXTRA-WIDE SCREENS: Grid Layout --- */
 
 @media (min-width: 1536px) {
-  /* Hide the snap-scroll layout and show the desktop grid layout */
-  .mobile-laptop-container {
-    display: none;
+  /* On desktop, disable snap scrolling and use a standard layout */
+  html {
+    scroll-snap-type: none;
   }
+
   .desktop-container {
     display: block;
-    height: 100vh;
-    width: 100%;
-    overflow-y: auto; /* Allow scrolling for the entire page if content is tall */
   }
-
-  /* Define the main content section for desktop */
-  .desktop-section {
-    min-height: 100vh; /* Make sections at least screen height */
-    display: flex;
-    align-items: center;
-  }
-
+  
   .desktop-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
     width: 100%;
   }
 
-  /* Specific adjustments for the grid layout */
   .desktop-grid .main-title,
   .desktop-grid .subtitle {
     text-align: left;
     margin-left: 0;
     margin-right: 0;
-  }
-
-  .desktop-section .section-content {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-  
-  /* Make sure the FAQ/Blog section can grow */
-  .desktop-grid .scrollable-content-container {
-      display: flex;
-      flex-direction: column;
-      height: 70vh; /* Set a fixed height for the container */
   }
 }
 

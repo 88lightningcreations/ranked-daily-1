@@ -7,11 +7,11 @@ export default function BespokeWebsitePage() {
       <h1 className="text-4xl font-bold text-center mb-8">Bespoke Website Development</h1>
       <Card>
         <Card.Header>
-          <Card.Title>A Website as Unique as Your Business</Card.Title>
+          <Card.Title>Bespoke Websites</Card.Title>
         </Card.Header>
         <Card.Body>
           <p className="mb-4">
-            Tired of cookie-cutter websites from template builders? We create truly bespoke websites from scratch, tailored to your brand, your customers, and your business goals. No templates, no limitations, just pure, handcrafted code.
+            Tired of cookie-cutter websites from template builders? We create truly bespoke websites, tailored to your brand, your customers, and your business goals. No templates, no limitations, just pure, handcrafted code.
           </p>
           <h3 className="text-xl font-bold mb-2">What You Get:</h3>
           <ul className="list-disc list-inside mb-4">
@@ -22,7 +22,7 @@ export default function BespokeWebsitePage() {
             <li>You own the code, no monthly platform fees.</li>
           </ul>
           <p>
-            Ready for a website that sets you apart from the competition? Contact us for a free consultation and quote.
+            99% of your competitors are using template generators, making it simple to distinguish yourself apart from their strategies to Google. Supplying your potential clients with exactly what they are demanding is the most fundamental step for business. 
           </p>
         </Card.Body>
       </Card>
