@@ -5,6 +5,14 @@ html, body {
   padding: 0;
   background-color: #fff;
   color: #000;
+  height: 100%;
+  overflow: hidden;
+}
+
+.full-page-scroll {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 }
 
 /* --- Base Layout Containers --- */
@@ -49,6 +57,7 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center; /* Vertically center content */
+  align-items: center; /* Horizontally center content */
   padding: 4rem 0; /* Add vertical spacing */
   box-sizing: border-box;
 }
