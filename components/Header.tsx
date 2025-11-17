@@ -43,7 +43,7 @@ export default function Header() {
         window.removeEventListener('scroll', controlNavbar);
       };
     }
-  }, [lastScrollY]);
+  }, []); // Removed lastScrollY from dependency array
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -55,7 +55,7 @@ export default function Header() {
   return (
     <header 
         ref={headerRef}
-        className={`sticky top-0 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'} bg-white shadow-md`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'} bg-white shadow-md`}
         style={{ height: '10vh' }}
     >
       <div className="container mx-auto px-4 h-full flex justify-between items-center">

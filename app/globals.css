@@ -1,9 +1,5 @@
 
 /* Base body reset */
-html {
-  scroll-snap-type: y mandatory;
-}
-
 html, body {
   margin: 0;
   padding: 0;
