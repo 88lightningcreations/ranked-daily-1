@@ -1,7 +1,6 @@
 
 import MarketingPackages from './marketing/ad-management/page';
 import RecentBlogPosts from '@/components/RecentBlogPosts';
-import ProductsList from '@/components/ProductsList';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 
@@ -33,14 +32,6 @@ export default function HomePage() {
             </div>
 
           </div>
-        </div>
-      </section>
-
-      {/* Section 2: Products */}
-      <section className="snap-section">
-        <div className="section-content">
-          <h2 className="section-title">Our Products</h2>
-          <ProductsList />
         </div>
       </section>
 
