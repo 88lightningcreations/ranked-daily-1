@@ -1,5 +1,4 @@
-
-import MarketingPackages from './marketing/ad-management/page';
+import MarketingCarousel from '@/components/MarketingCarousel';
 import RecentBlogPosts from '@/components/RecentBlogPosts';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
@@ -20,7 +19,8 @@ export default function HomePage() {
 
       <section className="snap-section">
         <div className="section-content">
-          <MarketingPackages />
+          <h2 className="section-title">Services</h2>
+          <MarketingCarousel />
         </div>
       </section>
 
