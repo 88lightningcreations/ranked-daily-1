@@ -95,9 +95,13 @@ html, body {
 .carousel-container {
   position: relative;
   width: 100%;
-  max-width: 600px; 
+  max-width: 900px;
   margin: 2rem auto;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.carousel-track-container {
+    overflow: hidden;
 }
 
 .carousel-track {
@@ -112,10 +116,11 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 1rem;
 }
 
 .carousel-slide .card {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -143,9 +148,15 @@ html, body {
 }
 
 .carousel-arrow.prev {
-  left: 5px;
+  left: -50px;
 }
 
 .carousel-arrow.next {
-  right: 5px;
+  right: -50px;
+}
+
+@media (min-width: 768px) {
+    .carousel-slide {
+        flex: 0 0 50%;
+    }
 }

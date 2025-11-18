@@ -19,6 +19,7 @@ export default function RecentBlogPosts() {
   const [error, setError] = useState<PostgrestError | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [slidesToShow, setSlidesToShow] = useState(1);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -51,12 +52,27 @@ export default function RecentBlogPosts() {
   }
 
   useEffect(() => {
+    const handleResize = () => {
+        if (window.innerWidth >= 768) {
+            setSlidesToShow(2);
+        } else {
+            setSlidesToShow(1);
+        }
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
     resetTimeout();
-    if (!isHovered && posts.length > 1) {
+    if (!isHovered && posts.length > slidesToShow) {
       timeoutRef.current = setTimeout(
         () =>
           setCurrentIndex((prevIndex) =>
-            prevIndex === posts.length - 1 ? 0 : prevIndex + 1
+            (prevIndex + 1) % (posts.length - slidesToShow + 1)
           ),
         2000
       );
@@ -65,17 +81,17 @@ export default function RecentBlogPosts() {
     return () => {
       resetTimeout();
     };
-  }, [currentIndex, isHovered, posts.length]);
+  }, [currentIndex, isHovered, posts.length, slidesToShow]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === posts.length - 1 ? 0 : prevIndex + 1
+        (prevIndex + 1) % (posts.length - slidesToShow + 1)
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? posts.length - 1 : prevIndex - 1
+      prevIndex === 0 ? posts.length - slidesToShow : prevIndex - 1
     );
   };
 
@@ -93,9 +109,10 @@ export default function RecentBlogPosts() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+    <div className="carousel-track-container">
       <div
         className="carousel-track"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        style={{ transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)` }}
       >
         {posts.map((post) => (
           <div className="carousel-slide" key={post.id}>
@@ -103,7 +120,8 @@ export default function RecentBlogPosts() {
           </div>
         ))}
       </div>
-      {posts.length > 1 && (
+      </div>
+      {posts.length > slidesToShow && (
         <>
           <button className="carousel-arrow prev" onClick={prevSlide}>&#10094;</button>
           <button className="carousel-arrow next" onClick={nextSlide}>&#10095;</button>

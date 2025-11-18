@@ -7,8 +7,7 @@ import Header from '@/components/Header';
 
 export default function HomePage() {
   return (
-    <>
-      {/* Section 1: Title, Marketing, FAQ, and Blog */}
+    <> 
       <section className="snap-section">
         <Header />
         <div className="section-content text-center">
