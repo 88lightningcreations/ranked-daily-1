@@ -1,4 +1,3 @@
-
 /* Base body reset */
 html, body {
   margin: 0;
@@ -36,6 +35,8 @@ html, body {
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   margin-bottom: 2rem;
   max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 .section-title {
   font-size: clamp(2rem, 5vw, 3rem);
@@ -83,8 +84,7 @@ html, body {
     width: 100%;
   }
 
-  .desktop-grid .main-title,
-  .desktop-grid .subtitle {
+  .desktop-grid .main-title {
     text-align: left;
     margin-left: 0;
     margin-right: 0;
