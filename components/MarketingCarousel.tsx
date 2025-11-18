@@ -29,7 +29,7 @@ export default function MarketingCarousel() {
           setCurrentIndex((prevIndex) =>
             (prevIndex + 1) % marketingComponents.length
           ),
-        3000 // Change slide every 3 seconds
+        4000 // Change slide every 4 seconds
       );
     }
 
