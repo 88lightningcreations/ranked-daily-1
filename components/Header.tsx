@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import './Header.css'; // Import the new CSS file
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
@@ -9,31 +10,14 @@ export default function Header() {
 
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
+      if (window.scrollY > lastScrollY && window.scrollY > 100) { // Hide after scrolling down 100px
         setIsVisible(false);
-      } else { // if scroll up show the navbar
+      } else { 
         setIsVisible(true);
       }
       setLastScrollY(window.scrollY);
     }
   };
-
-  useLayoutEffect(() => {
-    // This effect now ONLY handles the content margin to prevent overlap.
-    const updateLayout = () => {
-        if (headerRef.current) {
-            const headerHeight = headerRef.current.offsetHeight;
-            const mainContent = document.getElementById('main-content');
-            if (mainContent) {
-                mainContent.style.marginTop = `${headerHeight}px`;
-            }
-        }
-    };
-    
-    updateLayout();
-    window.addEventListener('resize', updateLayout);
-    return () => window.removeEventListener('resize', updateLayout);
-  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -43,7 +27,8 @@ export default function Header() {
         window.removeEventListener('scroll', controlNavbar);
       };
     }
-  }, []); // Removed lastScrollY from dependency array
+  }, [lastScrollY]); // Re-add lastScrollY to ensure the latest state is used
+
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -55,28 +40,17 @@ export default function Header() {
   return (
     <header 
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'} bg-white shadow-md`}
-        style={{ height: '10vh' }}
+        className={`header ${isVisible ? '' : 'hidden'}`}
     >
-      <div className="container mx-auto px-4 h-full flex justify-between items-center">
+      <div className="container d-flex justify-content-between align-items-center h-100">
         <div
           onClick={scrollToTop}
-          className="w-1/3"
-          style={{ 
-            fontFamily: 'var(--font-yellowtail)', 
-            fontWeight: 400, 
-            cursor: 'pointer',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            // This single CSS line handles all responsive font sizing.
-            fontSize: 'clamp(1rem, 4.5vw, 2.5rem)',
-          }}
+          className="header-logo"
         >
           RankedDaily.com
         </div>
-        <nav className="w-2/3 flex justify-end"> 
-          {/* Add your navigation links here */}
+        <nav> 
+          {/* Bootstrap navigation links can be added here */}
         </nav>
       </div>
     </header>

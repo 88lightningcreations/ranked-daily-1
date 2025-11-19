@@ -34,7 +34,7 @@ export default function HomePage() {
 
       <section className="snap-section">
         <div className="section-content">
-            <h3 className="section-title" style={{ marginTop: '3rem' }}>Recent Posts</h3>
+            <h2 className="section-title">Recent Posts</h2>
             <RecentBlogPosts />
         </div>
       </section>

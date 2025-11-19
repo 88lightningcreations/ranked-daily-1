@@ -5,7 +5,6 @@ html, body {
   background-color: #fff;
   color: #000;
   height: 100%;
-  overflow: hidden;
 }
 
 .full-page-scroll {
@@ -41,7 +40,7 @@ html, body {
 .section-title {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: bold;
-  margin-bottom: 2rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem); /* Responsive margin */
   text-align: center;
 }
 .text-center { text-align: center; }
@@ -58,11 +57,14 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center; /* Vertically center content */
-  align-items: center; /* Horizontally center content */
-  padding: 4rem 0; /* Add vertical spacing */
+  padding-top: 10vh; /* Add padding to the top to account for the fixed header */
   box-sizing: border-box;
 }
 
+.snap-section:last-of-type {
+    min-height: auto;
+    justify-content: flex-end;
+}
 
 /* --- EXTRA-WIDE SCREENS: Grid Layout --- */
 
@@ -115,13 +117,19 @@ html, body {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch; /* Make slides equal height */
   padding: 0 1rem;
 }
 
 .carousel-slide .card {
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-slide .card .card-body {
+    flex-grow: 1; /* Allow card body to grow */
 }
 
 .carousel-arrow {
