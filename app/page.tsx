@@ -40,11 +40,8 @@ export default function HomePage() {
       </section>
 
 
-      {/* Section 3: Footer */}
-      <section className="snap-section" style={{ justifyContent: 'flex-end', minHeight: 'auto' }}>
-        <div className="section-content">
-            <Footer />
-        </div>
+      <section className="snap-section">
+        <Footer />
       </section>
     </>
   );
