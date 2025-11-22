@@ -5,7 +5,6 @@ export default function BespokeWebsitePage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-8">Bespoke Website Development</h1>
       <div>
-        <h2 className="text-2xl font-bold mb-4 text-center">Bespoke Websites</h2>
         <div>
           <p className="mb-4">
             Tired of cookie-cutter websites from template builders? We create truly bespoke websites, tailored to your brand, your customers, and your business goals. No templates, no limitations, just pure, handcrafted code.
