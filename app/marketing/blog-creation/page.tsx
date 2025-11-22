@@ -1,15 +1,12 @@
 'use client';
-import { Card } from "react-bootstrap";
 
 export default function BlogCreationPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-8">Bespoke Blog Creation</h1>
-      <Card>
-        <Card.Header>
-          <Card.Title>Content Supplying only what is Demanded</Card.Title>
-        </Card.Header>
-        <Card.Body>
+      <div>
+        <h2 className="text-2xl font-bold mb-4 text-center">Content Supplying only what is Demanded</h2>
+        <div>
           <p className="mb-4">
             Content is king, and a high-quality blog is the best way to wear the crown. Google is the king-maker, which is why only relevant (demanded), authoratative, engaging, data-driven blog content is made. Each article is crafted to attract exactly what your target audience needs now, answering questions, and positioning you as the only needed industry expert.
           </p>
@@ -23,8 +20,8 @@ export default function BlogCreationPage() {
           <p>
             Publish content that gets results. 
           </p>
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

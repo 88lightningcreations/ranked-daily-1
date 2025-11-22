@@ -1,15 +1,12 @@
 'use client';
-import { Card } from "react-bootstrap";
 
 export default function GoogleBusinessProfilePage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-8">Google Business Profile Management</h1>
-      <Card>
-        <Card.Header>
-          <Card.Title>Dominate Local Search</Card.Title>
-        </Card.Header>
-        <Card.Body>
+      <div>
+        <h2 className="text-2xl font-bold mb-4 text-center">Dominate Local Search</h2>
+        <div>
           <p className="mb-4">
             Your Google Business Profile (GBP) is the most important tool for attracting local customers. A well-optimized profile will put your business at the top of Google Maps and local search results, driving a steady stream of leads and phone calls.
           </p>
@@ -24,8 +21,8 @@ export default function GoogleBusinessProfilePage() {
           <p>
             Your Google Business Profile is the most fundamental step to turn your digital strategy into a customer-generating machine. Comparable to an oil change or air & water filter replacement, this will define the quality of your experience and sustainability of the lifecycle of your campaigns!
           </p>
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

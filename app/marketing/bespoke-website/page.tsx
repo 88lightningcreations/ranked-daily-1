@@ -1,15 +1,12 @@
 'use client';
-import { Card } from "react-bootstrap";
 
 export default function BespokeWebsitePage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-8">Bespoke Website Development</h1>
-      <Card>
-        <Card.Header>
-          <Card.Title>Bespoke Websites</Card.Title>
-        </Card.Header>
-        <Card.Body>
+      <div>
+        <h2 className="text-2xl font-bold mb-4 text-center">Bespoke Websites</h2>
+        <div>
           <p className="mb-4">
             Tired of cookie-cutter websites from template builders? We create truly bespoke websites, tailored to your brand, your customers, and your business goals. No templates, no limitations, just pure, handcrafted code.
           </p>
@@ -24,8 +21,8 @@ export default function BespokeWebsitePage() {
           <p>
             99% of your competitors are using template generators, making it simple to distinguish yourself apart from their strategies to Google. Supplying your potential clients with exactly what they are demanding is the most fundamental step for business. 
           </p>
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }
