@@ -1,40 +1,50 @@
 'use client';
 
-import { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Header.css'; // Import the new CSS file
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
   const headerRef = useRef<HTMLHeadingElement>(null);
 
-  const controlNavbar = () => {
-    if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) { // Hide after scrolling down 100px
-        setIsVisible(false);
-      } else { 
-        setIsVisible(true);
-      }
-      setLastScrollY(window.scrollY);
-    }
-  };
-
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar);
+    const scrollContainer = document.querySelector('.full-page-scroll');
+
+    if (scrollContainer) {
+      const controlNavbar = () => {
+        if (scrollContainer.scrollTop > lastScrollY.current && scrollContainer.scrollTop > 100) {
+          setIsVisible(false);
+        } else { 
+          setIsVisible(true);
+        }
+        lastScrollY.current = scrollContainer.scrollTop;
+      };
+
+      scrollContainer.addEventListener('scroll', controlNavbar);
 
       return () => {
-        window.removeEventListener('scroll', controlNavbar);
+        scrollContainer.removeEventListener('scroll', controlNavbar);
       };
     }
-  }, [lastScrollY]); // Re-add lastScrollY to ensure the latest state is used
+  }, []);
 
+  useEffect(() => {
+    if (isVisible) {
+      document.body.classList.add('header-visible');
+    } else {
+      document.body.classList.remove('header-visible');
+    }
+  }, [isVisible]);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    const scrollContainer = document.querySelector('.full-page-scroll');
+    if (scrollContainer) {
+      scrollContainer.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (

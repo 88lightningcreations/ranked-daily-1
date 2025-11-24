@@ -3,6 +3,7 @@ import { Inter, Yellowtail } from 'next/font/google';
 import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CookieConsentWrapper from '@/components/CookieConsentWrapper';
+import Header from '@/components/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 const yellowtail = Yellowtail({
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${yellowtail.variable}`}>
+        <Header />
         <div className="full-page-scroll">
           {children}
         </div>

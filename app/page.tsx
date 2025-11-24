@@ -2,13 +2,11 @@ import MarketingCarousel from '@/components/MarketingCarousel';
 import RecentBlogPosts from '@/components/RecentBlogPosts';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 
 export default function HomePage() {
   return (
     <> 
       <section className="snap-section">
-        <Header />
         <div className="section-content text-center">
             <h1 className="main-title">Marketing Skilled Laborers.</h1>
             <p className="subtitle">
