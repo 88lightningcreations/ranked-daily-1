@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import './Header.css'; // Import the new CSS file
 
 export default function Header() {
@@ -37,28 +38,15 @@ export default function Header() {
     }
   }, [isVisible]);
 
-  const scrollToTop = () => {
-    const scrollContainer = document.querySelector('.full-page-scroll');
-    if (scrollContainer) {
-      scrollContainer.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
     <header 
         ref={headerRef}
         className={`header ${isVisible ? '' : 'hidden'}`}
     >
       <div className="container d-flex justify-content-between align-items-center h-100">
-        <div
-          onClick={scrollToTop}
-          className="header-logo"
-        >
+        <Link href="/" className="header-logo">
           RankedDaily.com
-        </div>
+        </Link>
         <nav> 
           {/* Bootstrap navigation links can be added here */}
         </nav>
