@@ -2,7 +2,6 @@
 
 import { Accordion } from 'react-bootstrap';
 import Link from "next/link";
-import { useEffect, useState } from 'react';
 
 const faqs = [
   {
@@ -26,24 +25,6 @@ const faqs = [
 ];
 
 export default function FAQ() {
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const handleSelect = (eventKey: any) => {
-    setIsAnimating(true);
-  };
-
-  useEffect(() => {
-    if (isAnimating) {
-      document.body.classList.add('disable-transitions');
-      const timer = setTimeout(() => {
-        document.body.classList.remove('disable-transitions');
-        setIsAnimating(false);
-      }, 500); // Match the duration of your CSS transitions
-
-      return () => clearTimeout(timer);
-    }
-  }, [isAnimating]);
-
 
   const jsonLd = {
       "@context": "https://schema.org",
@@ -66,7 +47,7 @@ export default function FAQ() {
               type="application/ld+json"
               dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
-          <Accordion defaultActiveKey="0" onSelect={handleSelect}>
+          <Accordion defaultActiveKey="0">
               {faqs.map((faq, index) => (
               <Accordion.Item eventKey={index.toString()} key={index}>
                   <Accordion.Header>{faq.question}</Accordion.Header>

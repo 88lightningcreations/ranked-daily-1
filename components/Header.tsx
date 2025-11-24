@@ -30,14 +30,6 @@ export default function Header() {
     }
   }, []);
 
-  useEffect(() => {
-    if (isVisible) {
-      document.body.classList.add('header-visible');
-    } else {
-      document.body.classList.remove('header-visible');
-    }
-  }, [isVisible]);
-
   return (
     <header 
         ref={headerRef}
