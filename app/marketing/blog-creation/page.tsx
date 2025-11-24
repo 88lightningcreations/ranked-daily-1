@@ -1,5 +1,3 @@
-'use client';
-
 export default function BlogCreationPage() {
   return (
     <div className="container mx-auto px-4 py-8">
@@ -13,7 +11,7 @@ export default function BlogCreationPage() {
           <ul className="list-disc list-inside mb-4">
             <li>In-depth keyword research and topic ideation specific to your service areas.</li>
             <li>Content writen from the perspective of experienced skilled laborers, native-English speakers.</li>
-            <li>The term 'SEO' in the age of AI means there must be strict adherance to supplying exactly what a client needs. Attempting to be sneaking with transparent backlinks or other equivalent strategies will result in you being blacklisted.  </li>
+            <li>The term &apos;SEO&apos; in the age of AI means there must be strict adherance to supplying exactly what a client needs. Attempting to be sneaking with transparent backlinks or other equivalent strategies will result in you being blacklisted.  </li>
             <li>Google indexes your blogs and ranks the content against your competition. </li>
             <li>Content supplying only what is demanded.</li>
           </ul>

@@ -54,21 +54,31 @@ html, body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;
-  display: flex;
+  display: flex; /* Changed from flex to block */
   flex-direction: column;
-  justify-content: center; /* Vertically center content */
-  box-sizing: border-box;
-  transition: padding-top 0.3s ease-in-out;
 }
 
-.header-visible .snap-section {
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    transition: padding-top 0.3s ease-in-out;
+}
+
+.header-visible .content-wrapper {
   padding-top: 10vh; /* Add padding to the top to account for the fixed header */
 }
 
 .snap-section:last-of-type {
     min-height: auto;
-    justify-content: flex-end;
 }
+
+.snap-section:last-of-type .content-wrapper {
+    justify-content: flex-end;
+    min-height: auto;
+}
+
 
 /* --- EXTRA-WIDE SCREENS: Grid Layout --- */
 

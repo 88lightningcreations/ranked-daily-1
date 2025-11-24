@@ -7,7 +7,7 @@ export default function TermsOfUsePage() {
         <p>
           By accessing and using this website, you accept and agree to be bound
           by the terms and provision of this agreement. In addition, when using
-          this website's particular services, you shall be subject to any
+          this website&apos;s particular services, you shall be subject to any
           posted guidelines or rules applicable to such services.
         </p>
         <h2>Disclaimer of Warranties</h2>
