@@ -17,7 +17,7 @@ async function getPost(slug: string) {
   return post;
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: { slug:string } }) {
   const post = await getPost(params.slug);
 
   if (!post) {
@@ -25,7 +25,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8" style={{paddingTop: '15vh'}}>
       <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
       <ReactMarkdown>{post.content}</ReactMarkdown>
     </div>

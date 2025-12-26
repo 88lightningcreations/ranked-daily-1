@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} ${yellowtail.variable}`}>
         <Header />
-        <div className="full-page-scroll">
+        <div>
           {children}
         </div>
         <CookieConsentWrapper />

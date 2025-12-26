@@ -1,5 +1,5 @@
-import { Card } from 'react-bootstrap';
 import Link from 'next/link';
+import './BlogPostCard.css';
 
 interface BlogPostCardProps {
   post: {
@@ -27,15 +27,13 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
     }
 
   return (
-    <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-        <Card className="h-100 border-0" style={{cursor: 'pointer'}}>
-            <Card.Body>
-                <Card.Title>{post.title}</Card.Title>
-                <Card.Text as="div">
-                    {summaryContent}
-                </Card.Text>
-            </Card.Body>
-        </Card>
+    <Link href={`/blog/${post.slug}`} className="blog-post-card-link">
+        <div className="card h-100 border-0 blog-post-card">
+            <div className="card-body">
+                <h5 className="card-title">{post.title}</h5>
+                <p className="card-text">{summaryContent}</p>
+            </div>
+        </div>
     </Link>
   );
 }

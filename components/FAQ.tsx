@@ -1,7 +1,8 @@
 'use client';
 
-import { Accordion } from 'react-bootstrap';
 import Link from "next/link";
+import { useState } from 'react';
+import './FAQ.css';
 
 const faqs = [
   {
@@ -25,6 +26,13 @@ const faqs = [
 ];
 
 export default function FAQ() {
+    const [open, setOpen] = useState(faqs.map(() => false));
+
+    const toggle = (index: number) => {
+        const newOpen = [...open];
+        newOpen[index] = !newOpen[index];
+        setOpen(newOpen);
+    };
 
   const jsonLd = {
       "@context": "https://schema.org",
@@ -47,16 +55,33 @@ export default function FAQ() {
               type="application/ld+json"
               dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
-          <Accordion defaultActiveKey="0">
-              {faqs.map((faq, index) => (
-              <Accordion.Item eventKey={index.toString()} key={index}>
-                  <Accordion.Header>{faq.question}</Accordion.Header>
-                  <Accordion.Body>
-                    <p>{faq.answer} <Link href={faq.link}>{faq.linkText}</Link></p>
-                  </Accordion.Body>
-              </Accordion.Item>
-              ))}
-          </Accordion>
+            <div className="accordion" id="faqAccordion">
+                {faqs.map((faq, index) => (
+                    <div className="accordion-item" key={index}>
+                        <h2 className="accordion-header" id={`heading${index}`}>
+                        <button 
+                            className="accordion-button" 
+                            type="button" 
+                            onClick={() => toggle(index)}
+                            aria-expanded={open[index]}
+                            aria-controls={`collapse${index}`}
+                        >
+                            {faq.question}
+                        </button>
+                        </h2>
+                        <div 
+                            id={`collapse${index}`}
+                            className={`accordion-collapse collapse ${open[index] ? 'show' : ''}`}
+                            aria-labelledby={`heading${index}`}
+                            data-bs-parent="#faqAccordion"
+                        >
+                        <div className="accordion-body">
+                            <p>{faq.answer} <Link href={faq.link}>{faq.linkText}</Link></p>
+                        </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
       </div>
   )
 }
