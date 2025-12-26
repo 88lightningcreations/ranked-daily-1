@@ -2,8 +2,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #fff;
-  color: #000;
   height: 100%;
 }
 
@@ -148,4 +146,16 @@ html, body {
 
 .carousel-arrow.next {
   right: -25px;
+}
+
+/* --- Theme Styling --- */
+
+body {
+  background-color: #E8E8E8;
+  color: #333;
+}
+
+body[data-theme='dark'] {
+  background-color: #2A3441;
+  color: #fff;
 }

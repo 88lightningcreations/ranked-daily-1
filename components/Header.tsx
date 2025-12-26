@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import './Header.css'; // Import the new CSS file
+import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
@@ -40,7 +41,7 @@ export default function Header() {
           RankedDaily.com
         </Link>
         <nav> 
-          {/* Bootstrap navigation links can be added here */}
+          <ThemeSwitcher />
         </nav>
       </div>
     </header>
