@@ -11,7 +11,7 @@ interface Post {
   id: string;
   title: string;
   slug: string;
-  seo_meta_desc: string;
+  seo_meta: string;
 }
 
 export default function BlogPostsList() {
@@ -24,9 +24,8 @@ export default function BlogPostsList() {
       try {
         const { data, error } = await supabase
           .from('blog_posts')
-          .select('id, title, slug, seo_meta_desc')
-          .eq('is_published', true)
-          .order('published_at', { ascending: false });
+          .select('id, title, slug, seo_meta')
+          .order('created_at', { ascending: false });
 
         if (error) {
           throw error;

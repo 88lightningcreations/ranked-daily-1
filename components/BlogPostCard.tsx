@@ -6,12 +6,12 @@ interface BlogPostCardProps {
     id: string;
     title: string;
     slug: string;
-    seo_meta_desc: string;
+    seo_meta: string;
   };
 }
 
 export default function BlogPostCard({ post }: BlogPostCardProps) {
-    const summary = post.seo_meta_desc || '';
+    const summary = post.seo_meta || '';
     const maxWords = 40;
     const words = summary.split(' ');
 
