@@ -1,4 +1,27 @@
+
 .blog-post-card-link {
   text-decoration: none;
   color: inherit;
+  display: block;
+}
+
+.blog-post-card {
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 200px;
+}
+
+.blog-post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.blog-post-card-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.blog-post-card-summary {
+    opacity: 0.8;
 }

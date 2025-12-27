@@ -53,26 +53,9 @@ export default function MarketingCarousel() {
     }
   }, [currentIndex, isTransitioning]);
 
-
-  const nextSlide = () => {
-    if(currentIndex < duplicatedMarketingComponents.length - 1) {
-        setCurrentIndex((prevIndex) =>
-            (prevIndex + 1)
-        );
-    }
-  };
-
-  const prevSlide = () => {
-      if(currentIndex > 0) {
-        setCurrentIndex((prevIndex) =>
-            prevIndex - 1
-        );
-      }
-  };
-
   return (
     <div
-      className="carousel-container"
+      className="carousel-container py-8"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -88,12 +71,6 @@ export default function MarketingCarousel() {
           ))}
         </div>
       </div>
-      {marketingComponents.length > 1 && (
-        <>
-          <button className="carousel-arrow prev" onClick={prevSlide}>&#10094;</button>
-          <button className="carousel-arrow next" onClick={nextSlide}>&#10095;</button>
-        </>
-      )}
     </div>
   );
 }

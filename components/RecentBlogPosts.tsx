@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 import BlogPostCard from './BlogPostCard';
 import { PostgrestError } from '@supabase/supabase-js';
+import './RecentBlogPosts.css';
 
 interface Post {
   id: string;
@@ -83,18 +84,6 @@ export default function RecentBlogPosts() {
     };
   }, [currentIndex, isHovered, posts.length, slidesToShow]);
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-        (prevIndex + 1) % (posts.length - slidesToShow + 1)
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? posts.length - slidesToShow : prevIndex - 1
-    );
-  };
-
   if (loading) {
     return <p>Loading blog posts...</p>;
   }
@@ -115,18 +104,12 @@ export default function RecentBlogPosts() {
         style={{ transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)` }}
       >
         {posts.map((post) => (
-          <div className="carousel-slide" key={post.id}>
+          <div className="carousel-slide" key={post.id} style={{ width: `${100 / slidesToShow}%` }}>
             <BlogPostCard post={post} />
           </div>
         ))}
       </div>
       </div>
-      {posts.length > slidesToShow && (
-        <>
-          <button className="carousel-arrow prev" onClick={prevSlide}>&#10094;</button>
-          <button className="carousel-arrow next" onClick={nextSlide}>&#10095;</button>
-        </>
-      )}
     </div>
   );
 }

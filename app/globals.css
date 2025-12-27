@@ -1,216 +1,120 @@
-/* --- CSS Reset --- */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
 
-/* --- Base Styles --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
 body {
+    background-color: #0f172a;
+    color: white;
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
-/* --- THEMES --- */
-
-/* Dark Theme (Default) */
-body {
-    background-color: #1A1A1A;
-    color: #FFFFFF;
+.content-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-/* Light Theme */
-body[data-theme="light"] {
-    background-color: #FFFFFF;
-    color: #1A1A1A;
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
 }
 
-
-/* --- Typography --- */
-
-.main-title, .section-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    animation: float 10s infinite alternate;
 }
 
-.main-title {
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+.blob-steel-blue {
+    background: rgba(70, 130, 180, 0.6);
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    left: 10%;
+    animation-duration: 15s;
+}
+
+.blob-dark-slate-green {
+    background: rgba(47, 79, 79, 0.6);
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 60%;
+    animation-duration: 12s;
+}
+
+.blob-maroon {
+    background: rgba(128, 0, 0, 0.6);
+    width: 350px;
+    height: 350px;
+    top: 30%;
+    left: 30%;
+    animation-duration: 18s;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+    to {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+.float {
+    animation: float 6s ease-in-out infinite alternate;
+}
+
+.snap-section {
+    padding-top: 12vh;
 }
 
 .section-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.subtitle {
-  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-  max-width: 55ch;
-  margin-bottom: 3rem;
-  line-height: 1.7;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-p {
-    margin-bottom: 1.5rem;
-    font-size: clamp(1rem, 1.8vw, 1.15rem);
-}
-
-
-/* --- Layout --- */
-
-.section-content {
-  max-width: 1200px;
-  width: 90%;
-  margin: 0 auto;
-  padding: 5rem 0;
-}
-
-.text-center {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     text-align: center;
-}
-
-/* --- Header & Navigation --- */
-.header {
-    background-color: transparent;
-    color: #FFFFFF;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-body[data-theme="light"] .header {
-    background-color: transparent;
-    color: #1A1A1A;
-}
-
-/* --- Buttons --- */
-.btn {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background-color: #D4AF37; /* Gold */
-    color: #1A1A1A;
-    border: 2px solid #D4AF37;
-}
-
-.btn-primary:hover {
-    background-color: transparent;
+    margin-bottom: 3rem;
+    position: relative;
     color: #D4AF37;
 }
 
-.btn-secondary {
-    background-color: transparent;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
-}
-
-.btn-secondary:hover {
-    background-color: #FFFFFF;
-    color: #1A1A1A;
-}
-
-body[data-theme="light"] .btn-secondary {
-    color: #1A1A1A;
-    border-color: #1A1A1A;
-}
-
-body[data-theme="light"] .btn-secondary:hover {
-    background-color: #1A1A1A;
-    color: #FFFFFF;
-}
-
-/* --- Carousel --- */
-/* (Assuming you still need a carousel, styles would go here) */
-/* Keep carousel styles for now, but they may need to be updated later */
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.carousel-track-container {
-  overflow: hidden;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.carousel-slide {
-  flex-shrink: 0;
-  width: 100%;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
-@media (min-width: 768px) {
-  .carousel-slide {
-    width: 50%;
-  }
-}
-
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: transparent;
-  color: #D4AF37;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 1;
-  padding: 0;
-}
-
-.carousel-arrow.prev {
-  left: -40px;
-}
-
-.carousel-arrow.next {
-  right: -40px;
-}
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
-    .section-content {
-        padding: 4rem 0;
-    }
-
-    .main-title {
-        font-size: 2.5rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #D4AF37;
+    border-radius: 2px;
 }
