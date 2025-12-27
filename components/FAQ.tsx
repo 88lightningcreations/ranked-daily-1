@@ -6,10 +6,10 @@ import './FAQ.css';
 
 const faqs = [
   {
-    question: "What is 24 Hour Emergency HVAC?",
-    answer: "A 24-hour emergency HVAC service provides heating, ventilation, and air conditioning repairs and services around the clock, ensuring that you can get help whenever you need it.",
+    question: "Why not use Wordpress, SquareSpace, GoDaddy etc for my website?",
+    answer: "We as software developers refer to these platforms as 'bloatware'. The size of these websites weighs down the rendering in order for people to auto-make these websites.",
     linkText: "Learn more in our blog post.",
-    link: "/blog/24-hour-emergency-hvac",
+    link: "/blog/bespoke-website-development",
   },
   {
     question: "How can I improve my Google Business Profile?",
