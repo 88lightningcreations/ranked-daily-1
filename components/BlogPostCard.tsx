@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import './BlogPostCard.css';
 
 interface BlogPostCardProps {
   post: {
