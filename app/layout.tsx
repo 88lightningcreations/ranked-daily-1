@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
-import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './globals.css';
 import CookieConsentWrapper from '@/components/CookieConsentWrapper';
 import Header from '@/components/Header';
 
@@ -25,11 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${playfair.variable}`}>
-        <Header />
-        <div>
-          {children}
-        </div>
-        <CookieConsentWrapper />
+          <Header />
+          <div>
+            {children}
+          </div>
+          <CookieConsentWrapper />
       </body>
     </html>
   );

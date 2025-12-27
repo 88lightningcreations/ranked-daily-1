@@ -9,11 +9,9 @@ const ThemeSwitcher = () => {
 
   useEffect(() => {
     setMounted(true);
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      setTheme(storedTheme);
-      document.body.setAttribute("data-theme", storedTheme);
-    }
+    const storedTheme = localStorage.getItem("theme") || "light";
+    setTheme(storedTheme);
+    document.body.setAttribute("data-theme", storedTheme);
   }, []);
 
   const toggleTheme = () => {
