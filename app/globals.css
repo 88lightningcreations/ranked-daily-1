@@ -1,102 +1,154 @@
-/* Base body reset */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+/* --- CSS Reset --- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
-/* --- Base Layout Containers --- */
-
-.section-content {
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  box-sizing: border-box;
+/* --- Base Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
+/* --- THEMES --- */
+
+/* Dark Theme (Default) */
+body {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+}
+
+/* Light Theme */
+body[data-theme="light"] {
+    background-color: #FFFFFF;
+    color: #1A1A1A;
+}
+
 
 /* --- Typography --- */
 
-.main-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: bold;
-  margin-bottom: 1rem;
+.main-title, .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
 }
-.subtitle {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+
+.main-title {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
   margin-bottom: 2rem;
-  max-width: 60ch;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  max-width: 55ch;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
-.section-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: bold;
-  margin-bottom: clamp(1.5rem, 3vw, 2rem); /* Responsive margin */
-  text-align: center;
-}
-.text-center { text-align: center; }
 
-
-/* --- Section Snapping Behavior --- */
-
-.snap-section {
-  min-height: 100vh; /* Be at least screen height, but can grow */
-  width: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  position: relative;
-  display: flex; /* Changed from flex to block */
-  flex-direction: column;
-}
-
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    transition: padding-top 0.3s ease-in-out;
-}
-
-.disable-transitions .content-wrapper {
-    transition: none;
-}
-
-.header-visible .content-wrapper {
-  padding-top: 10vh; /* Add padding to the top to account for the fixed header */
-}
-
-.snap-section:last-of-type {
-    min-height: auto;
-}
-
-.snap-section:last-of-type .content-wrapper {
-    justify-content: flex-end;
-    min-height: auto;
+p {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
 }
 
 
-/* --- EXTRA-WIDE SCREENS: Grid Layout --- */
+/* --- Layout --- */
 
-@media (min-width: 1536px) {
-  /* On desktop, disable snap scrolling and use a standard layout */
-  html {
-    scroll-snap-type: none;
-  }
-
-  .desktop-container {
-    display: block;
-  }
-  
-  .desktop-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
+.section-content {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 5rem 0;
 }
 
+.text-center {
+    text-align: center;
+}
 
+/* --- Header & Navigation --- */
+.header {
+    background-color: transparent;
+    color: #FFFFFF;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body[data-theme="light"] .header {
+    background-color: transparent;
+    color: #1A1A1A;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #D4AF37; /* Gold */
+    color: #1A1A1A;
+    border: 2px solid #D4AF37;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: #D4AF37;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+.btn-secondary:hover {
+    background-color: #FFFFFF;
+    color: #1A1A1A;
+}
+
+body[data-theme="light"] .btn-secondary {
+    color: #1A1A1A;
+    border-color: #1A1A1A;
+}
+
+body[data-theme="light"] .btn-secondary:hover {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+}
+
+/* --- Carousel --- */
+/* (Assuming you still need a carousel, styles would go here) */
+/* Keep carousel styles for now, but they may need to be updated later */
 .carousel-container {
   position: relative;
   overflow: hidden;
@@ -132,7 +184,7 @@ html, body {
   top: 50%;
   transform: translateY(-50%);
   background-color: transparent;
-  color: #000;
+  color: #D4AF37;
   border: none;
   font-size: 2rem;
   cursor: pointer;
@@ -141,21 +193,24 @@ html, body {
 }
 
 .carousel-arrow.prev {
-  left: -25px;
+  left: -40px;
 }
 
 .carousel-arrow.next {
-  right: -25px;
+  right: -40px;
 }
 
-/* --- Theme Styling --- */
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .section-content {
+        padding: 4rem 0;
+    }
 
-body {
-  background-color: #E8E8E8;
-  color: #333;
-}
+    .main-title {
+        font-size: 2.5rem;
+    }
 
-body[data-theme='dark'] {
-  background-color: #2A3441;
-  color: #fff;
+    .section-title {
+        font-size: 2rem;
+    }
 }

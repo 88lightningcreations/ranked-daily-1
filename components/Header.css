@@ -3,29 +3,31 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 99; 
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  background-color: #E8E8E8;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  height: 10vh;
+  z-index: 99;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  padding: 0 5%;
+  height: 12vh;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-body[data-theme='dark'] .header {
-    background-color: #2A3441;
+body[data-theme="light"] .header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.header.hidden {
-  transform: translateY(-100%);
+.header.scrolled {
+    background-color: #1A1A1A;
+    border-color: transparent;
 }
+
+body[data-theme="light"] .header.scrolled {
+    background-color: #FFFFFF;
+}
+
 
 .header-logo {
-  font-family: var(--font-yellowtail);
-  font-weight: 400;
-  cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: clamp(1rem, 4.5vw, 2.5rem);
+  font-family: var(--font-playfair-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
   color: inherit;
   text-decoration: none;
 }
@@ -43,4 +45,9 @@ body[data-theme='dark'] .header {
   cursor: pointer;
   font-size: 1.5rem;
   color: inherit;
+  transition: color 0.3s ease;
+}
+
+.theme-switcher:hover {
+    color: #D4AF37; /* Gold color for hover */
 }

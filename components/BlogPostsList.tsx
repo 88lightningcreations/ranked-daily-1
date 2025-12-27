@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import BlogPostCard from './BlogPostCard';
 import { PostgrestError } from '@supabase/supabase-js';
-import { Row, Col } from 'react-bootstrap';
 
 interface Post {
   id: string;
@@ -51,12 +50,12 @@ export default function BlogPostsList() {
   }
 
   return (
-    <Row>
+    <div>
       {posts.map((post) => (
-        <Col md={4} key={post.id} className="mb-4">
+        <div key={post.id} className="mb-8">
             <BlogPostCard post={post} />
-        </Col>
+        </div>
       ))}
-    </Row>
+    </div>
   );
 }

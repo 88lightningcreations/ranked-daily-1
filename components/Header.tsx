@@ -6,35 +6,29 @@ import './Header.css'; // Import the new CSS file
 import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Header() {
-  const [isVisible, setIsVisible] = useState(true);
-  const lastScrollY = useRef(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    const scrollContainer = document.querySelector('.full-page-scroll');
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
-    if (scrollContainer) {
-      const controlNavbar = () => {
-        if (scrollContainer.scrollTop > lastScrollY.current && scrollContainer.scrollTop > 100) {
-          setIsVisible(false);
-        } else { 
-          setIsVisible(true);
-        }
-        lastScrollY.current = scrollContainer.scrollTop;
-      };
+    window.addEventListener('scroll', handleScroll);
 
-      scrollContainer.addEventListener('scroll', controlNavbar);
-
-      return () => {
-        scrollContainer.removeEventListener('scroll', controlNavbar);
-      };
-    }
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
     <header 
         ref={headerRef}
-        className={`header ${isVisible ? '' : 'hidden'}`}
+        className={`header ${isScrolled ? 'scrolled' : ''}`}
     >
       <div className="container d-flex justify-content-between align-items-center h-100">
         <Link href="/" className="header-logo">

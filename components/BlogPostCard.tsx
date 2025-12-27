@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import './BlogPostCard.css';
 
 interface BlogPostCardProps {
   post: {
@@ -28,10 +27,10 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
 
   return (
     <Link href={`/blog/${post.slug}`} className="blog-post-card-link">
-        <div className="card h-100 border-0 blog-post-card">
-            <div className="card-body">
-                <h5 className="card-title">{post.title}</h5>
-                <p className="card-text">{summaryContent}</p>
+        <div className="blog-post-card">
+            <div>
+                <h5 className="blog-post-card-title">{post.title}</h5>
+                <p className="blog-post-card-summary">{summaryContent}</p>
             </div>
         </div>
     </Link>
